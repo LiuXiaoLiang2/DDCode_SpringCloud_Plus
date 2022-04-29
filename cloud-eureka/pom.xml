@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>eureka-server7744</module>
+        <module>eureka-server7755</module>
     </modules>
 
 
