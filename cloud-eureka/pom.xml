@@ -13,6 +13,7 @@
     <modules>
         <module>eureka-server7744</module>
         <module>eureka-server7755</module>
+        <module>eureka-provider8811</module>
     </modules>
 
 
