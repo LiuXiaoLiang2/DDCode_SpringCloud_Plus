@@ -13,6 +13,7 @@
         <module>gateway-quickstart</module>
         <module>gateway-nacos-config</module>
         <module>gateway-nacos-discovery</module>
+        <module>gateway-filter</module>
     </modules>
 
     <artifactId>cloud-gateway</artifactId>
