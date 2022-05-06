@@ -1,0 +1,40 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: gateway-server-rate-limit
+  # 配置 redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 10000
+    jedis:
+      pool:
+        max-active: 1024
+        max-wait: 10000
+        max-idle: 200
+        min-idle: 5
+  # 配置网关
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: lb://gateway-product
+          predicates:
+            - Path=/product/**
+          filters:
+            - name: GatewayRequestRateLimiter # GatewayRequestRateLimiter RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # 令牌每秒的填充率
+                redis-rate-limiter.burstCapacity: 2 # 令牌桶总量
+                key-resolver: "#{@paramKeyResolver}" # 限流规则Bean的名称
+
+# 链接Eureka
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server1:7744/eureka/,http://eureka-server1:7745/eureka/

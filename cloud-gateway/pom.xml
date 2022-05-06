@@ -14,6 +14,7 @@
         <module>gateway-nacos-config</module>
         <module>gateway-nacos-discovery</module>
         <module>gateway-filter</module>
+        <module>gateway-eureka</module>
     </modules>
 
     <artifactId>cloud-gateway</artifactId>

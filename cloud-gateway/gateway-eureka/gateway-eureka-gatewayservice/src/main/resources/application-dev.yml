@@ -1,0 +1,19 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      routes: # 数组, 所以使用 -
+        - id: product-service
+          uri: http://localhost:8822
+          predicates: # 断言, 满足这个断言条件, 就会映射到上面的目标URL
+#            - Path=/product/** # 请求路径必须包括/product/
+#            - Query=token # 请求参数中必须有token
+#            - Query=token, abc. # 请求参数中必须有token, 同时参数值必须是abc开头的(abc. 是正则)
+#            - Method=Get # 只要是get请求都会转发
+#            - After=2022-04-23T08:10:48.399+08:00[Asia/Shanghai]
+#            - RemoteAddr=192.168.234.1/0 # 匹配远程地址请求是192.168.234.1
+            - Header=X-Request-id, \d+ # header中必须有key:X-Request-id, 同时参数值必须是整数, \d+ 是正则

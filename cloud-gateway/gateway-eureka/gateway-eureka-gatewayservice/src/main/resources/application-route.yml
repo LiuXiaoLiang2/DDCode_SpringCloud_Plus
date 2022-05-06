@@ -1,0 +1,21 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        # 是否与服务名称发现组件进行结合, 通过serviceId 转发到具体实例
+        locator:
+          # 是否开启服务发现的路由规则
+          enabled: true
+          # 是否将服务名称转化小写
+          lower-case-service-id: true
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server1:7744/eureka/,http://eureka-server1:7745/eureka/
