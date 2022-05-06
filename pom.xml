@@ -14,6 +14,7 @@
         <module>cloud-nacos</module>
         <module>cloud-openfeign</module>
         <module>cloud-hystrix</module>
+        <module>cloud-gateway</module>
     </modules>
 
     <!-- 统一管理jar包版本, 用来控制版本号 -->
